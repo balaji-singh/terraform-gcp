@@ -12,16 +12,17 @@ resource "google_container_cluster" "primary" {
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
   # node pool and immediately delete it.
-  remove_default_node_pool = true
+  remove_default_node_pool = var.remove_default_node_pool
   initial_node_count       = 1
 
   network    = var.network
   subnetwork = var.subnetwork
+  deletion_protection = var.deletion_protection
 
-  ip_allocation_policy {
-    cluster_secondary_range_name  = var.cluster_secondary_range_name
-    services_secondary_range_name = var.services_secondary_range_name
-  }
+  # ip_allocation_policy {
+  #   cluster_secondary_range_name  = var.cluster_secondary_range_name
+  #   services_secondary_range_name = var.services_secondary_range_name
+  # }
 
   private_cluster_config {
     enable_private_nodes    = var.enable_private_nodes

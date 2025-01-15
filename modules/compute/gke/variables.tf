@@ -125,3 +125,15 @@ variable "max_unavailable" {
   type        = number
   default     = 0
 }
+
+variable "deletion_protection" {
+  description = "Whether deletion protection is enabled for the cluster"
+  type        = bool
+  default     = false
+}
+
+variable "remove_default_node_pool" {
+  description = "Whether to remove the default node pool"
+  type        = bool
+  default     = true
+}
