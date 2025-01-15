@@ -58,4 +58,7 @@ module "gke" {
   # Node tags
   # The following parameter configures the tags for the nodes.
   node_tags = ["gke-node", "production"]  # Tags for nodes
+  maintenance_recurrence = "FREQ=WEEKLY;BYDAY=SA,SU"  # Maintenance recurrence
+  maintenance_end_time = "2025-01-01T00:00:00Z"  # Maintenance end time
+  maintenance_start_time = "2026-01-01T00:00:00Z"  # Maintenance start time
 }
